@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Record Algorithm Explorer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero" id="home">
+    <nav class="nav">
+      <a class="brand" href="#home">Student<span>Algo</span></a>
+      <div class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#input">Student Data</a>
+        <a href="#explorer">Algorithms</a>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <p class="eyebrow">ALGORITHM EXPLORER</p>
+      <h1>Find student records<br><span>the smarter way.</span></h1>
+      <p>Explore and compare four searching algorithms using student roll numbers.</p>
+      <a class="primary-link" href="#input">Start exploring <span>→</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section intro" id="problem">
+      <p class="eyebrow">01 / THE PROBLEM</p>
+      <h2>Searching student records can take time.</h2>
+      <p>Schools and colleges manage many student records. Finding one student by roll number becomes slower as the record list grows. This project compares four algorithms that search for the same roll number and explains how each one works.</p>
+      <div class="info-grid">
+        <article class="info-card"><h3>Why it matters</h3><p>Quickly locating records helps staff and students access information efficiently.</p></article>
+        <article class="info-card"><h3>What we compute</h3><p>The matching student, number of comparisons, search steps, and theoretical time complexity.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="input">
+      <p class="eyebrow">02 / YOUR DATA</p>
+      <h2>Build a student list</h2>
+      <p class="section-lead">Add records or load the sample list. Roll numbers must be unique positive integers.</p>
+      <form id="studentForm" class="form-grid">
+        <label>Student name<input id="studentName" type="text" placeholder="e.g. Asha Kumar" maxlength="50" required></label>
+        <label>Roll number<input id="rollNumber" type="number" min="1" step="1" placeholder="e.g. 101" required></label>
+        <label>Department<input id="department" type="text" placeholder="e.g. Computer Science" maxlength="40" required></label>
+        <label>Marks (0–100)<input id="marks" type="number" min="0" max="100" step="1" placeholder="e.g. 88" required></label>
+        <div class="form-actions">
+          <button class="button primary" type="submit">Add student</button>
+          <button class="button secondary" type="button" id="sampleBtn">Load sample data</button>
+          <button class="button secondary" type="button" id="clearBtn">Clear all</button>
+        </div>
+      </form>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Roll number</th><th>Department</th><th>Marks</th><th>Action</th></tr></thead>
+          <tbody id="studentTable"><tr><td colspan="5" class="empty">No records yet. Add a student or load sample data.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section explorer" id="explorer">
+      <p class="eyebrow">03 / SEARCH ALGORITHMS</p>
+      <h2>Compare four approaches</h2>
+      <p class="section-lead">Enter a roll number, choose an algorithm, and inspect the result. The algorithms search the same student list.</p>
+      <div class="search-panel">
+        <label for="targetRoll">Roll number to find</label>
+        <div class="search-row">
+          <input id="targetRoll" type="number" min="1" step="1" placeholder="Enter roll number">
+          <button class="button primary" id="searchBtn" type="button">Run selected algorithm</button>
+        </div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Search algorithms">
+        <button class="tab active" data-algorithm="linear" role="tab" aria-selected="true">Linear Search</button>
+        <button class="tab" data-algorithm="binary" role="tab" aria-selected="false">Binary Search</button>
+        <button class="tab" data-algorithm="jump" role="tab" aria-selected="false">Jump Search</button>
+        <button class="tab" data-algorithm="interpolation" role="tab" aria-selected="false">Interpolation Search</button>
+      </div>
+      <div class="result-card" id="result" aria-live="polite">
+        <h3>Ready to search</h3><p>Add student records, enter a roll number and run an algorithm.</p>
+      </div>
+    </section>
+
+    <section class="section" id="complexity">
+      <p class="eyebrow">04 / COMPLEXITY GUIDE</p>
+      <h2>Understand the performance</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Algorithm</th><th>Best case</th><th>Average case</th><th>Worst case</th><th>Extra space</th></tr></thead>
+          <tbody>
+            <tr><td>Linear Search</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(1)</td></tr>
+            <tr><td>Binary Search</td><td>O(1)</td><td>O(log n)</td><td>O(log n)</td><td>O(1)</td></tr>
+            <tr><td>Jump Search</td><td>O(1)</td><td>O(√n)</td><td>O(√n)</td><td>O(1)</td></tr>
+            <tr><td>Interpolation Search</td><td>O(1)</td><td>O(log log n)*</td><td>O(n)</td><td>O(1)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">n is the number of student records. *Interpolation Search's average-case bound assumes sorted, approximately uniformly distributed numeric keys. Binary, Jump and Interpolation Search use a sorted copy of the records.</p>
+    </section>
+  </main>
+
+  <footer><p>Student Record Algorithm Explorer · Built with HTML, CSS and JavaScript</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
